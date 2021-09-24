@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.estiloHeader{
+    color: gold;
+    background-color: black;
+    padding: 1em;
+    text-align: center;
+    font-family: 'Bonheur Royale', cursive;
+    
+}
+.estiloHeader h1{
+    font-size: 6em;
+}
+.estiloHeader h3{
+    font-size: 3em;
+}
+.cajaPadre{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar ul li a:hover{
+    background-color: gold;
+}
