@@ -23,6 +23,18 @@
     justify-content: space-between;
     align-items: center;
 }
+.cajaFormulario{
+    margin: 4em;
+    padding: 1em;
+    color: gold;
+    background-color: black;
+    border-radius: 2em;
+    box-shadow: 1em 1em gray;
+}
+.cajaFormulario h3{
+    text-align: center;
+}
+
 .navbar ul li a:hover{
     background-color: gold;
 }
