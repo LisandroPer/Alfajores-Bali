@@ -16,6 +16,39 @@ const usuarios = [];
 
 
 
+//Obtención del mail/nombre del usuario
+let ingresoNombreUsuario = document.getElementById("exampleInputEmail1");
+ingresoNombreUsuario.onchange = () => {
+    console.log(ingresoNombreUsuario.value);
+}
+//obtención de la contraseña del usuario
+let ingresarContraseñaUsuario = document.getElementById("exampleInputPassword1");
+ingresarContraseñaUsuario.onchange = () =>{
+    console.log(ingresarContraseñaUsuario.value);
+}
+
+
+usuarios.push(new Usuario(1,ingresoNombreUsuario.value,ingresarContraseñaUsuario.value));
+
+//Obtengo y almaceno mi formulario desde el DOM.
+let formularioDeUsuarios = document.getElementById("registroUsuarios");
+
+//Creo un evento a través de una función arrow.
+formularioDeUsuarios.onsubmit = (event) => {
+    //El event.preventDefault() evita que se refresque la página.
+    event.preventDefault();
+    //Se indica a la función flecha que debe bajar el ambito a lo local.
+    //Que se quede con el evento de ese momento.
+    event.target;
+    
+    const inputs = formularioDeUsuarios.children;
+    usuarios.push(new Usuario(0,inputs[0].value,inputs[1].value));
+    console.log(usuarios);
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
 //Creación de la clase alfajores. El producto que se venderá en el sitio web. Parametros: id, nombre y precio de los alfajores.
 class Alfajor{
     constructor(idAlfajor,nombreAlfajor,precio){
