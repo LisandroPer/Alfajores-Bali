@@ -4,8 +4,8 @@ let entradaContraseña = "";
 
 //Creación de la clase Usuario. Parametros: id, mail y contraseña de los usuarios.
 class Usuario{
-    constructor(idUsuario,mail,contraseña){
-        this.idUsuario = parseInt(idUsuario);
+    constructor(mail,contraseña){
+        
         this.mail = mail;
         this.contraseña = contraseña;
     }
@@ -28,7 +28,7 @@ ingresarContraseñaUsuario.onchange = () =>{
 }
 
 
-usuarios.push(new Usuario(1,ingresoNombreUsuario.value,ingresarContraseñaUsuario.value));
+usuarios.push(new Usuario(ingresoNombreUsuario.value,ingresarContraseñaUsuario.value));
 
 //Obtengo y almaceno mi formulario desde el DOM.
 let formularioDeUsuarios = document.getElementById("registroUsuarios");
@@ -42,9 +42,10 @@ formularioDeUsuarios.onsubmit = (event) => {
     event.target;
     
     const inputs = formularioDeUsuarios.children;
-    usuarios.push(new Usuario(0,inputs[0].value,inputs[1].value));
+    usuarios.push(new Usuario(inputs[0].value,inputs[1].value));
     console.log(usuarios);
 }
+
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -99,6 +100,11 @@ for(const boton of botones){
        console.log("El alfajor seleccionado es: " + seleccion.nombreAlfajor + "y su precio es de: " + seleccion.precio);
        //Se agrega al arrayd "carritoCompras" el nombre del alfajor seleccionado. 
        carritoCompras.push(seleccion);
+       //Guardo la información de carrito de compras en el localStorage.
+       localStorage.setItem("alfajoresEnCarrito",JSON.stringify(carritoCompras));
+
+       let consoleCarrito = JSON.parse(localStorage.getItem("alfajoresEnCarrito"));
+       console.log(consoleCarrito);
    })
 }
 
