@@ -1,6 +1,6 @@
 //Creación de variables para registrar las entradas de los usuarios.
-let entradaNombre = "";
-let entradaContraseña = "";
+
+
 
 //Creación de la clase Usuario. Parametros: id, mail y contraseña de los usuarios.
 class Usuario{
@@ -19,16 +19,18 @@ const usuarios = [];
 //Obtención del mail/nombre del usuario
 let ingresoNombreUsuario = document.getElementById("exampleInputEmail1");
 ingresoNombreUsuario.onchange = () => {
-    console.log(ingresoNombreUsuario.value);
+    let entradaNombre = ingresoNombreUsuario.value;
+    console.log(entradaNombre);
 }
 //obtención de la contraseña del usuario
 let ingresarContraseñaUsuario = document.getElementById("exampleInputPassword1");
 ingresarContraseñaUsuario.onchange = () =>{
-    console.log(ingresarContraseñaUsuario.value);
+    let entradaContraseña = ingresarContraseñaUsuario.value;
+    console.log(entradaContraseña);
 }
 
 
-usuarios.push(new Usuario(ingresoNombreUsuario.value,ingresarContraseñaUsuario.value));
+usuarios.push(new Usuario(ingresoNombreUsuario, ingresarContraseñaUsuario));
 
 //Obtengo y almaceno mi formulario desde el DOM.
 let formularioDeUsuarios = document.getElementById("registroUsuarios");
