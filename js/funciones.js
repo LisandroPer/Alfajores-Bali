@@ -40,13 +40,15 @@ function registrarUsuarios(){
 function alfajoresUI(alfajores, idAlfajor){
     for(const alfajor of alfajores){
         //forma de crear el div con los objetos alfajor a través de JQuerry.
-        $("#contenedorDeProductos").append(`<div class="card text-white bg-dark" style="width: 18rem;">
+        $("#contenedorDeProductos").append(`<div class="col">
+                                            <div class="card text-white bg-dark" style="width: 18rem;">
                                              <img src="/Imagenes/alfajorbali.jpg" class="card-img-top" alt="...">
                                              <div class="card-body">
                                                  <h5 class="card-title">${alfajor.nombreAlfajor}</h5>
                                                  <p class="card-text">Precio: ${alfajor.precio}</p>
                                                  <button id="${alfajor.idAlfajor}" class = "btn btn-primary">Buy</button>
                                               </div>
+                                            </div>
                                             </div>`);
         
         //LA DE ABAJO ES LA FORMA DE HACERLO SIN JQUERRY.
