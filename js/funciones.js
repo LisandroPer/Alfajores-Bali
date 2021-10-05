@@ -46,7 +46,7 @@ function alfajoresUI(alfajores, idAlfajor){
                                              <div class="card-body">
                                                  <h5 class="card-title">${alfajor.nombreAlfajor}</h5>
                                                  <p class="card-text">Precio: ${alfajor.precio}</p>
-                                                 <button id="${alfajor.idAlfajor}" class = "btn btn-primary">Buy</button>
+                                                 <button id="${alfajor.idAlfajor}" class = "btn btn-primary btn-compra">Buy</button>
                                               </div>
                                             </div>
                                             </div>`);
@@ -79,7 +79,7 @@ function creadorDeAlfajoresHTML(){
 
 function botonDeComprar(){
     //Obtención de los elementos de la clase btnCompra
-   let botones = document.getElementsByClassName("btn btn-primary");
+   let botones = document.getElementsByClassName("btn btn-primary btn-compra");
    //Comprobación de su obtención mediante el console.log.
    console.log(botones);
    for(const boton of botones){
@@ -95,9 +95,25 @@ function botonDeComprar(){
 
         let consoleCarrito = JSON.parse(localStorage.getItem("alfajoresEnCarrito"));
         console.log(consoleCarrito);
+        
+        //llamo a la función que añade la información de los objetos del arrayd compras al HTML.
+        carritoUI(carritoCompras);
       })
     }
 
   //Comprobación de los nombres guardados en la arrayd.
   console.log(carritoCompras);
+}
+
+//Función encargada de añadir 
+function carritoUI(carritoCompras){
+  //traigo la info del if del html de carritoCantidad. Le agrego la información de la arrayd carritoCompras.
+   $("#carritoCantidad").html(carritoCompras.length);
+   //Borro los elementos anteriores para que no se repita la arrayd entera de nombre y que se vean solo los alfajores seleccionados.
+   $("#carritoDeProductos").empty();
+   
+   //Introduzco los nobmres y el precio de los productos seleccionados en el carrito del HTML.
+  for (const alfajor of carritoCompras) {
+     $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} </p>`);
+  }
 }
