@@ -105,7 +105,7 @@ function botonDeComprar(){
   console.log(carritoCompras);
 }
 
-//Función encargada de añadir 
+//Función encargada de añadir los productos seleccionados por el usuario al carrito de comrpas del HTML.
 function carritoUI(carritoCompras){
   //traigo la info del if del html de carritoCantidad. Le agrego la información de la arrayd carritoCompras.
    $("#carritoCantidad").html(carritoCompras.length);
@@ -116,4 +116,22 @@ function carritoUI(carritoCompras){
   for (const alfajor of carritoCompras) {
      $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} </p>`);
   }
+}
+
+//-----------------------------------------------------------FUNCIONES DE ANIMACIONES----------------------------------------------------------
+
+//Función para hacer aparecer el cuadro de registro hubicado en la sección main del index.
+function animacionAparecerMain(){
+  $("#mainDelIndex").show(1500);
+}
+
+function scroller(){
+  $("#irAlFooter").click(function(e){
+    //Llamo a la función prevent default para prevenir posibles errores. 
+    e.preventDefault();
+    //indico que la animación se generará dentro del body del HTML.
+    $("html, body").animate({
+      scrollTop: $("#footerId").offset().top
+    })
+  })
 }

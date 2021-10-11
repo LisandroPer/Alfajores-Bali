@@ -1,5 +1,4 @@
 
-registrarUsuarios();
 
 
 
@@ -25,3 +24,13 @@ console.log(alfajores);
 botonDeComprar();
 
 console.log($("#contenedorDeProductos"));
+//Animación para el main del index.
+animacionAparecerMain();
+
+//Función que sirve para almacenar los datos de los usuarios
+registrarUsuarios();
+
+//Esta función sirve para que cuando el usuario haga click en contact, se vaya directo al footer de la página index.
+scroller();
+
+
