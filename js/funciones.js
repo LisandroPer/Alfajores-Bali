@@ -8,15 +8,15 @@ function registrarUsuarios(){
       console.log(entradaNombre);
     }
     //obtención de la contraseña del usuario
-    let ingresarContraseñaUsuario = document.getElementById("exampleInputPassword1");
+    let ingresarContrasenaUsuario = document.getElementById("exampleInputPassword1");
     //guardo la contraseña en una variable.
-    ingresarContraseñaUsuario.onchange = () =>{
-       let entradaContraseña = ingresarContraseñaUsuario.value;
+    ingresarContrasenaUsuario.onchange = () =>{
+       let entradaContrasena = ingresarContrasenaUsuario.value;
        console.log(entradaContraseña);
     }
 
    //Añado la información de los usuarios a la arrayd "usuarios".
-   usuarios.push(new Usuario(ingresoNombreUsuario, ingresarContraseñaUsuario));
+   usuarios.push(new Usuario(ingresoNombreUsuario, ingresarContrasenaUsuario));
 
    //Obtengo y almaceno mi formulario desde el DOM.
    let formularioDeUsuarios = document.getElementById("registroUsuarios");
@@ -77,6 +77,7 @@ function creadorDeAlfajoresHTML(){
 }
 */
 
+//Agrega los productos al carrito.
 function botonDeComprar(){
     //Obtención de los elementos de la clase btnCompra
    let botones = document.getElementsByClassName("btn btn-primary btn-compra");
@@ -114,8 +115,21 @@ function carritoUI(carritoCompras){
    
    //Introduzco los nobmres y el precio de los productos seleccionados en el carrito del HTML.
   for (const alfajor of carritoCompras) {
-     $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} </p>`);
+     $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p>`);
   }
+  //agrego el botón cofirmar compra que me permitirá enviar una solicitud al back end.
+  $("#carritoDeProductos").append(`<button id="btnConfirmar">Confirm purchase</button>`);
+  //llamo a la función que enviará la compra.
+  $("#btnConfirmar").on("click",enviarCompra);
+}
+
+//función para enviar la información de la compra al servidor.
+function enviarCompra(){
+  //llamo al servidor donde enviaré la información. Transformo la información del carritoCompras a formato JSON.
+  $.post("https://jsonplaceholder.typicode.com/posts",JSON.stringify(carritoCompras),function(respuesta,estado){
+    console.log(estado);
+    console.log(respuesta);
+  })
 }
 
 //-----------------------------------------------------------FUNCIONES DE ANIMACIONES----------------------------------------------------------
