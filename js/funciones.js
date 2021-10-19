@@ -1,39 +1,3 @@
-//----------------------------------------------------FUNCIONES PARA USUARIOS-----------------------------------------------------------//
-function registrarUsuarios(){
-    //Obtención del mail/nombre del usuario
-    let ingresoNombreUsuario = document.getElementById("exampleInputEmail1");
-    //guado el nombre de usuario en una variable.
-    ingresoNombreUsuario.onchange = () => {
-      let entradaNombre = ingresoNombreUsuario.value;
-      console.log(entradaNombre);
-    }
-    //obtención de la contraseña del usuario
-    let ingresarContrasenaUsuario = document.getElementById("exampleInputPassword1");
-    //guardo la contraseña en una variable.
-    ingresarContrasenaUsuario.onchange = () =>{
-       let entradaContrasena = ingresarContrasenaUsuario.value;
-       console.log(entradaContraseña);
-    }
-
-   //Añado la información de los usuarios a la arrayd "usuarios".
-   usuarios.push(new Usuario(ingresoNombreUsuario, ingresarContrasenaUsuario));
-
-   //Obtengo y almaceno mi formulario desde el DOM.
-   let formularioDeUsuarios = document.getElementById("registroUsuarios");
-
-   //Creo un evento a través de una función arrow.
-   formularioDeUsuarios.onsubmit = (event) => {
-      //El event.preventDefault() evita que se refresque la página.
-      event.preventDefault();
-      //Se indica a la función flecha que debe bajar el ambito a lo local.
-      //Que se quede con el evento de ese momento.
-      event.target;
-    
-     const inputs = formularioDeUsuarios.children;
-     usuarios.push(new Usuario(inputs[0].value,inputs[1].value));
-     console.log(usuarios);
-    }
-}
 
 //------------------------------------------------------------FUNBCIONES PARA ALFAJORES----------------------------------------------------------//
 
@@ -135,9 +99,10 @@ function enviarCompra(){
 //-----------------------------------------------------------FUNCIONES DE ANIMACIONES----------------------------------------------------------
 
 //Función para hacer aparecer el cuadro de registro hubicado en la sección main del index.
-function animacionAparecerMain(){
+/*function animacionAparecerMain(){
   $("#mainDelIndex").show(1500);
-}
+}*/
+
 
 function scroller(){
   $("#irAlFooter").click(function(e){
@@ -149,3 +114,83 @@ function scroller(){
     })
   })
 }
+
+//----------------------------------------------------FUNCIONES PARA USUARIOS-----------------------------------------------------------//
+
+function cargarEvento(){
+  $("#fomularioRegistrarse").on("submit",nuevoUsuario);
+}
+
+function nuevoUsuario(){
+  
+
+  let nombreDelUsuario = $("#exampleInputEmail1").value;
+  let contrasenaDeUsuario = $("#exampleInputPassword1").value;
+  
+  console.log(nombreDelUsuario);
+  console.log(contrasenaDeUsuario);
+  usuarios.push(new Usuario(nombreDelUsuario,contrasenaDeUsuario));
+  console.log(usuarios);
+
+  //const inputs = fomularioRegistrarse.children;
+  //usuarios.push(new Usuario(inputs[0].value,inputs[1].value));
+  //console.log(usuarios); 
+}
+
+
+/*
+function botonRegistrar(){
+  $("#btnRegistrarse").click(function(e){
+    e.preventDefault();
+  })
+  $("btnRegistrarse").on("click",registrarUsuarios);
+}
+function registrarUsuarios(){
+  let nombreUsuario = $("#exampleInputEmail1").value;
+  let ingresarContrasenaUsuario = $("#exampleInputPassword1").value;
+  console.log(nombreUsuario);
+
+  usuarios.push(new Usuario(nombreUsuario,ingresarContrasenaUsuario));
+}
+*/
+
+
+
+/*
+function registrarUsuarios(){
+  //Obtención del mail/nombre del usuario
+  let ingresoNombreUsuario = document.getElementById("exampleInputEmail1");
+  //guado el nombre de usuario en una variable.
+  ingresoNombreUsuario.onchange = () => {
+    let entradaNombre = ingresoNombreUsuario.value;
+    console.log(entradaNombre);
+  }
+  //obtención de la contraseña del usuario
+  let ingresarContrasenaUsuario = document.getElementById("exampleInputPassword1");
+  //guardo la contraseña en una variable.
+  ingresarContrasenaUsuario.onchange = () =>{
+     let entradaContrasena = ingresarContrasenaUsuario.value;
+     console.log(entradaContraseña);
+  }
+
+ //Añado la información de los usuarios a la arrayd "usuarios".
+ usuarios.push(new Usuario(ingresoNombreUsuario, ingresarContrasenaUsuario));
+
+ //Obtengo y almaceno mi formulario desde el DOM.
+ let formularioDeUsuarios = document.getElementById("registroUsuarios");
+
+ //Creo un evento a través de una función arrow.
+ formularioDeUsuarios.onsubmit = (event) => {
+    //El event.preventDefault() evita que se refresque la página.
+    event.preventDefault();
+    //Se indica a la función flecha que debe bajar el ambito a lo local.
+    //Que se quede con el evento de ese momento.
+    event.target;
+  
+   const inputs = formularioDeUsuarios.children;
+   usuarios.push(new Usuario(inputs[0].value,inputs[1].value));
+   console.log(usuarios);
+  }
+}
+*/
+

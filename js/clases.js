@@ -1,9 +1,9 @@
 //Creación de la clase Usuario. Parametros: id, mail y contraseña de los usuarios.
 class Usuario{
-    constructor(mail,contraseña){
+    constructor(mail,contrasena){
         
         this.mail = mail;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
     }
 }
 
