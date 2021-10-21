@@ -10,9 +10,10 @@ class Usuario{
 
 //Creación de la clase alfajores. El producto que se venderá en el sitio web. Parametros: id, nombre y precio de los alfajores.
 class Alfajor{
-    constructor(idAlfajor,nombreAlfajor,precio){
+    constructor(idAlfajor,nombreAlfajor,precio,imagenAlfajor){
         this.idAlfajor = parseInt(idAlfajor);
         this.nombreAlfajor = nombreAlfajor;
         this.precio = parseFloat(precio);
+        this.imagenAlfajor = imagenAlfajor;
     }
 }

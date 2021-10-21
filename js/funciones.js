@@ -4,9 +4,9 @@
 function alfajoresUI(alfajores, idAlfajor){
     for(const alfajor of alfajores){
         //forma de crear el div con los objetos alfajor a través de JQuerry.
-        $("#contenedorDeProductos").append(`<div class="col">
+        $("#contenedorDeProductos").append(`<div class="col justify content center align items center">
                                             <div class="card text-white bg-dark" style="width: 18rem;">
-                                             <img src="/Imagenes/alfajorbali.jpg" class="card-img-top" alt="...">
+                                             <img src="${alfajor.imagenAlfajor}" class="card-img-top claseImagenesCarrito" alt="...">
                                              <div class="card-body">
                                                  <h5 class="card-title">${alfajor.nombreAlfajor}</h5>
                                                  <p class="card-text">Precio: ${alfajor.precio}</p>
@@ -69,6 +69,8 @@ function botonDeComprar(){
   //Comprobación de los nombres guardados en la arrayd.
   console.log(carritoCompras);
 }
+//-----------------------------
+
 
 //Función encargada de añadir los productos seleccionados por el usuario al carrito de comrpas del HTML.
 function carritoUI(carritoCompras){
@@ -79,13 +81,25 @@ function carritoUI(carritoCompras){
    
    //Introduzco los nobmres y el precio de los productos seleccionados en el carrito del HTML.
   for (const alfajor of carritoCompras) {
-     $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p>`);
+     $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btn btn-danger">Delete purchase</button>`);
   }
   //agrego el botón cofirmar compra que me permitirá enviar una solicitud al back end.
-  $("#carritoDeProductos").append(`<button id="btnConfirmar">Confirm purchase</button>`);
+  $("#carritoDeProductos").append(`<button id="btnConfirmar" class="btn btn-success">Confirm purchase</button>`);
   //llamo a la función que enviará la compra.
   $("#btnConfirmar").on("click",enviarCompra);
 }
+
+
+// BOTON BTNELIMINAR: FUNCIÓN ELIMINAR PRODUCTO DEL CARRITO.
+function eliminarProductoDelCarrito(){
+  $("#btnEliminar").click(function(){
+    for (const alfajorElminado of carritoCompras) {
+      $("#carritoDeProductos").remove(alfajorElminado);
+    }
+    //$("#carritoDeProductos").remove(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btn btn-danger">Delete purchase</button>`);
+  })
+}
+
 
 //función para enviar la información de la compra al servidor.
 function enviarCompra(){
@@ -99,9 +113,9 @@ function enviarCompra(){
 //-----------------------------------------------------------FUNCIONES DE ANIMACIONES----------------------------------------------------------
 
 //Función para hacer aparecer el cuadro de registro hubicado en la sección main del index.
-/*function animacionAparecerMain(){
+function animacionAparecerMain(){
   $("#mainDelIndex").show(1500);
-}*/
+}
 
 
 function scroller(){
@@ -115,82 +129,32 @@ function scroller(){
   })
 }
 
-//----------------------------------------------------FUNCIONES PARA USUARIOS-----------------------------------------------------------//
+//----------------------------------------------------FUNCIONES PARA REGISTRAR USUARIOS-----------------------------------------------------------//
+
 
 function cargarEvento(){
-  $("#fomularioRegistrarse").on("submit",nuevoUsuario);
+  $("#fomularioRegistrarse").on("submit",function(event){
+    event.preventDefault();
+    nuevoUsuario();
+  })
 }
+
+
 
 function nuevoUsuario(){
   
 
-  let nombreDelUsuario = $("#exampleInputEmail1").value;
-  let contrasenaDeUsuario = $("#exampleInputPassword1").value;
+ let nombreDelUsuario = $("#exampleInputEmail1");
+ let contrasenaDeUsuario = $("#exampleInputPassword1");
   
-  console.log(nombreDelUsuario);
-  console.log(contrasenaDeUsuario);
-  usuarios.push(new Usuario(nombreDelUsuario,contrasenaDeUsuario));
+  
+  usuarios.push(new Usuario(nombreDelUsuario.value,contrasenaDeUsuario.value));
   console.log(usuarios);
-
-  //const inputs = fomularioRegistrarse.children;
-  //usuarios.push(new Usuario(inputs[0].value,inputs[1].value));
-  //console.log(usuarios); 
-}
-
-
-/*
-function botonRegistrar(){
-  $("#btnRegistrarse").click(function(e){
-    e.preventDefault();
-  })
-  $("btnRegistrarse").on("click",registrarUsuarios);
-}
-function registrarUsuarios(){
-  let nombreUsuario = $("#exampleInputEmail1").value;
-  let ingresarContrasenaUsuario = $("#exampleInputPassword1").value;
-  console.log(nombreUsuario);
-
-  usuarios.push(new Usuario(nombreUsuario,ingresarContrasenaUsuario));
-}
-*/
+}  
 
 
 
-/*
-function registrarUsuarios(){
-  //Obtención del mail/nombre del usuario
-  let ingresoNombreUsuario = document.getElementById("exampleInputEmail1");
-  //guado el nombre de usuario en una variable.
-  ingresoNombreUsuario.onchange = () => {
-    let entradaNombre = ingresoNombreUsuario.value;
-    console.log(entradaNombre);
-  }
-  //obtención de la contraseña del usuario
-  let ingresarContrasenaUsuario = document.getElementById("exampleInputPassword1");
-  //guardo la contraseña en una variable.
-  ingresarContrasenaUsuario.onchange = () =>{
-     let entradaContrasena = ingresarContrasenaUsuario.value;
-     console.log(entradaContraseña);
-  }
 
- //Añado la información de los usuarios a la arrayd "usuarios".
- usuarios.push(new Usuario(ingresoNombreUsuario, ingresarContrasenaUsuario));
 
- //Obtengo y almaceno mi formulario desde el DOM.
- let formularioDeUsuarios = document.getElementById("registroUsuarios");
 
- //Creo un evento a través de una función arrow.
- formularioDeUsuarios.onsubmit = (event) => {
-    //El event.preventDefault() evita que se refresque la página.
-    event.preventDefault();
-    //Se indica a la función flecha que debe bajar el ambito a lo local.
-    //Que se quede con el evento de ese momento.
-    event.target;
-  
-   const inputs = formularioDeUsuarios.children;
-   usuarios.push(new Usuario(inputs[0].value,inputs[1].value));
-   console.log(usuarios);
-  }
-}
-*/
 

@@ -1,4 +1,8 @@
 
+//MÉTODO REDY
+
+    
+
 
 
 
@@ -18,7 +22,7 @@ $.get("../data/productos.json", function(respuesta,estado){
     //Recorro todos los objetos que hay en el json
     for (const objeto of respuesta) {
         //Transformo los objetos de json en objetos del tipo alfajor.
-        alfajores.push(new Alfajor(objeto.idAlfajor,objeto.nombreAlfajor,objeto.precio));
+        alfajores.push(new Alfajor(objeto.idAlfajor,objeto.nombreAlfajor,objeto.precio,objeto.imagenAlfajor))
     }
     //se coloca aquí para que llegue a ejecutarse 
     //creación de la interfaz de los productos
@@ -40,7 +44,7 @@ console.log(alfajores);
 
 console.log($("#contenedorDeProductos"));
 //Animación para el main del index.
-//animacionAparecerMain();
+animacionAparecerMain();
 
 //Función que sirve para almacenar los datos de los usuarios
 //registrarUsuarios();
@@ -55,4 +59,3 @@ cargarEvento();
 
 
 
- 

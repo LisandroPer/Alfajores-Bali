@@ -54,3 +54,14 @@
     margin: 2rem;
     padding: 1rem;
 }
+
+.claseImagenesCarrito{
+    width: 17rem;
+    height: 15rem;
+    border-radius: 5px;
+}
+
+.dropdown{
+    margin: 1rem;
+    padding: 1rem;
+}

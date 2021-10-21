@@ -1,7 +1,7 @@
 [
-    {"idAlfajor":1,"nombreAlfajor":"Alfajor de dulce de leche","precio":30},
-    {"idAlfajor":2,"nombreAlfajor":"Alfajor de mantequilla de maní","precio":40},
-    {"idAlfajor":3,"nombreAlfajor":"Alfajor de frutilla","precio":30},
-    {"idAlfajor":3,"nombreAlfajor":"Alfajor de chocolate blanco","precio":35}
+    {"idAlfajor":1,"nombreAlfajor":"Alfajor de dulce de leche","precio":30,"imagenAlfajor":"Imagenes/alfajor dulce de leche.jpg"},
+    {"idAlfajor":2,"nombreAlfajor":"Alfajor de mantequilla de maní","precio":40,"imagenAlfajor":"Imagenes/alfajor mani.png"},
+    {"idAlfajor":3,"nombreAlfajor":"Alfajor de frutilla","precio":30,"imagenAlfajor":"Imagenes/alfajorbali.jpg"},
+    {"idAlfajor":3,"nombreAlfajor":"Alfajor de chocolate blanco","precio":35,"imagenAlfajor":"Imagenes/alfajor de chocolate blanco.jpg"}
 
 ]
