@@ -81,7 +81,9 @@ function carritoUI(carritoCompras){
    
    //Introduzco los nobmres y el precio de los productos seleccionados en el carrito del HTML.
   for (const alfajor of carritoCompras) {
-     $("#carritoDeProductos").append(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btn btn-danger">Delete purchase</button>`);
+     const alfajoresHTMLcarrito = `<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btnEliminar1 btn btn-danger">Delete purchase</button>`;
+     $("#carritoDeProductos").append(alfajoresHTMLcarrito);
+       //`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btnEliminar btn btn-danger">Delete purchase</button>`);
   }
   //agrego el botón cofirmar compra que me permitirá enviar una solicitud al back end.
   $("#carritoDeProductos").append(`<button id="btnConfirmar" class="btn btn-success">Confirm purchase</button>`);
@@ -90,15 +92,25 @@ function carritoUI(carritoCompras){
 }
 
 
-// BOTON BTNELIMINAR: FUNCIÓN ELIMINAR PRODUCTO DEL CARRITO.
-function eliminarProductoDelCarrito(){
-  $("#btnEliminar").click(function(){
-    for (const alfajorElminado of carritoCompras) {
-      $("#carritoDeProductos").remove(alfajorElminado);
+//ELIMINAR ALFAJOR
+function findAlfajorParaEliminar(){
+  for (const botonEliminar of botonesEliminar) {
+    botonEliminar = document.getElementsByClassName("btnEliminar1 btn btn-danger");
+    
+    botonEliminar.addEventListener("click",function(){
+     
+      carritoCompras.find(alfajor => alfajor.idAlfajor == this.id);
+      alfajor.remove();
+    })
     }
-    //$("#carritoDeProductos").remove(`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btn btn-danger">Delete purchase</button>`);
+}
+function eliminarElProducto(){
+  $(".btnEliminar1 btn btn-danger").on("click",function(){
+    findAlfajorParaEliminar();
+    console("va bien");
   })
 }
+
 
 
 //función para enviar la información de la compra al servidor.
@@ -130,31 +142,35 @@ function scroller(){
 }
 
 //----------------------------------------------------FUNCIONES PARA REGISTRAR USUARIOS-----------------------------------------------------------//
-
-
-function cargarEvento(){
-  $("#fomularioRegistrarse").on("submit",function(event){
-    event.preventDefault();
-    nuevoUsuario();
-  })
+//A TRAVÉS DE ESTA FUNCIÓN ENVIÓ LOS DATOS DE LOS USUARIOS AL SERVIDOR.
+function registrarUsuarios(){
+  //llamo al id del boton en el index.html
+  $("#btnRegistrarse").click(function(e){
+    //prevengo fallas.
+    e.preventDefault();
+    
+    //guardo la contraseña y el nombre de usuario en una variable
+    let nombreUsuario = $("#exampleInputEmail1").val();
+    let contrasenaUsuario = $("#exampleInputPassword1").val();
+    
+    //pusheo los datos de las variables a la Arrayd de usuarios.
+    usuarios.push(new Usuario(nombreUsuario,contrasenaUsuario));
+    console.log(usuarios);
+    
+    //llamo al método para subir los datos al servidor.
+    enviarInformacionDeUsuario();
+   })
 }
 
 
-
-function nuevoUsuario(){
-  
-
- let nombreDelUsuario = $("#exampleInputEmail1");
- let contrasenaDeUsuario = $("#exampleInputPassword1");
-  
-  
-  usuarios.push(new Usuario(nombreDelUsuario.value,contrasenaDeUsuario.value));
-  console.log(usuarios);
-}  
-
-
-
-
+//MÉTODOS PARA SUBIR LOS DATOS AL SERVIDOR.
+function enviarInformacionDeUsuario(){
+  //método post + página vinculada + transformo la información a formato JSON con el método stringy + llamo a una función de estadoi y respuesta.
+  $.post("https://jsonplaceholder.typicode.com/posts",JSON.stringify(usuarios),function(respuesta,estado){
+    console.log(estado);
+    console.log(respuesta);
+  })
+}
 
 
 

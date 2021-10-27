@@ -55,7 +55,6 @@ scroller();
 console.dir(carritoCompras);
 
 //------------------------------------------------------------------Intendo registrarse.
-cargarEvento();
-
+registrarUsuarios();
 
 
