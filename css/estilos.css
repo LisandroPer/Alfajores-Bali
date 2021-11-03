@@ -71,7 +71,7 @@
 }
 
 .producto-carrito{
-  background-color: chartreuse;
+  background-color: black;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -114,3 +114,12 @@
     align-items: center;
 }
 
+.producto-carrito p{
+  color: yellow;
+  font-size: 1em;
+  font-family: 'Fruktur', cursive;
+}
+
+.dropdown-menu{
+    background-color: yellow;
+}

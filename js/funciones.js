@@ -14,7 +14,7 @@ function alfajoresUI(alfajores, idAlfajor){
                                               </div>
                                             </div>
                                             </div>`);
-        
+             
         //LA DE ABAJO ES LA FORMA DE HACERLO SIN JQUERRY.
         //document.getElementById(idAlfajor).appendChild(creadorDeAlfajoresHTML(alfajor));
     }
@@ -77,7 +77,7 @@ function botonDeComprar(){
 
 //Función encargada de añadir los productos seleccionados por el usuario al carrito de comrpas del HTML.
 function carritoUI(carritoCompras){
-  //traigo la info del if del html de carritoCantidad. Le agrego la información de la arrayd carritoCompras.
+  //traigo la info del if del html de carritoCantidad. Le agrego la información de la array carritoCompras.
   //El método html () en jQuery se utiliza para establecer o devolver el contenido innerHTML del elemento seleccionado. 
    $("#carritoCantidad").html(carritoCompras.length);
    //Borro los elementos anteriores para que no se repita la arrayd entera de nombre y que se vean solo los alfajores seleccionados.
