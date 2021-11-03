@@ -87,15 +87,15 @@ function carritoUI(carritoCompras){
   for (const alfajor of carritoCompras) {
      const alfajoresHTMLcarrito = `<div class="producto-carrito"><p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="eliminar${alfajor.idAlfajor}" class="btnEliminar1 btn btn-danger">Delete purchase</button> <div>`;
      $("#carritoDeProductos").append(alfajoresHTMLcarrito);
-       //`<p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="btnEliminar" class="btnEliminar btn btn-danger">Delete purchase</button>`);
        //ELIMINAR PRODUCTO DEL CARRITO
        
        let botonEliminar = document.getElementById(`eliminar${alfajor.idAlfajor}`);
        console.log(botonEliminar.parentElement);
 
        botonEliminar.addEventListener("click", function(){
-         carritoCompras = carritoCompras.filter(elemento => elemento.idAlfajor =! alfajoresHTMLcarrito);
-         botonEliminar.parentElement.remove();
+         
+        botonEliminar.parentElement.remove();
+        carritoCompras = carritoCompras.filter(el => el.idAlfajor != idAlfajor);
        })
        
   }

@@ -51,7 +51,7 @@
 }
 .cajaDeProductos{
     background: linear-gradient(90deg, rgba(254,101,120,0.9531162806919643) 13%, rgba(251,236,63,1) 82%);
-    margin: 2rem;
+    margin: 1rem;
     padding: 1rem;
 }
 
@@ -65,3 +65,52 @@
     margin: 1rem;
     padding: 1rem;
 }
+
+.colorFondo{
+    background: linear-gradient(90deg, rgba(101,233,254,0.9531162806919643) 14%, rgba(251,236,63,1) 82%);;
+}
+
+.producto-carrito{
+  background-color: chartreuse;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedor-main-presentacion{
+    display: flex;
+    background-color: black;
+    padding: 4rem;
+    margin: 2rem;
+    
+    border-radius: 15px;
+    box-shadow: 1em 1em gray;
+}
+.contenedor-palabras{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.contenedor-palabras h3{
+    color: yellow;
+    font-size: 3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.contenedor-palabras p{
+    color: yellow;
+    font-size: 2rem;
+}
+
+.iframe{
+    width: 30rem;
+    height: 30rem;
+}
+
+.seccion-iframe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
