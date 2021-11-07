@@ -1,6 +1,7 @@
 
 //------------------------------------------------------------FUNBCIONES PARA ALFAJORES----------------------------------------------------------//
 
+
 function alfajoresUI(alfajores, idAlfajor){
     for(const alfajor of alfajores){
         //forma de crear el div con los objetos alfajor a través de JQuerry.
@@ -50,23 +51,28 @@ function botonDeComprar(){
    for(const boton of botones){
       //Se escuchará el evento "click" y saldrá por consola el id del alfajor seleccionado.
      boton.addEventListener("click",function(){
-         let seleccion = alfajores.find(alfajor => alfajor.idAlfajor == this.id);
-         //Saldia por consola del nombre del alfajor seleccionado.
-         
-         //console.log("El alfajor seleccionado es: " + seleccion.nombreAlfajor + "y su precio es de: " + seleccion.precio);
-         
-         //Se agrega al arrayd "carritoCompras" el nombre del alfajor seleccionado. 
-         carritoCompras.push(seleccion);
-         //Guardo la información de carrito de compras en el localStorage.
-        
-         localStorage.setItem("alfajoresEnCarrito",JSON.stringify(carritoCompras));
+      let seleccion = alfajores.find(alfajor => alfajor.idAlfajor == this.id);
+      //Saldia por consola del nombre del alfajor seleccionado.
+      
+      //console.log("El alfajor seleccionado es: " + seleccion.nombreAlfajor + "y su precio es de: " + seleccion.precio);
+      
+      //Se agrega al arrayd "carritoCompras" el nombre del alfajor seleccionado. 
+      carritoCompras.push(seleccion);
+          //___________________________________________________
+       //Guardo la información de carrito de compras en el localStorage.
+     
+       localStorage.setItem("alfajoresEnCarrito",JSON.stringify(carritoCompras));
 
-        let consoleCarrito = JSON.parse(localStorage.getItem("alfajoresEnCarrito"));
-        console.log(consoleCarrito);
-        
-        //llamo a la función que añade la información de los objetos del arrayd compras al HTML.
-        carritoUI(carritoCompras);
+       let consoleCarrito = JSON.parse(localStorage.getItem("alfajoresEnCarrito"));
+       console.log(consoleCarrito);
+     //_______________________________________________-__
+     
+
+     //llamo a la función que añade la información de los objetos del arrayd compras al HTML.
+     carritoUI(carritoCompras);
+     
       })
+     
     }
 
   //Comprobación de los nombres guardados en la arrayd.
@@ -77,26 +83,34 @@ function botonDeComprar(){
 
 //Función encargada de añadir los productos seleccionados por el usuario al carrito de comrpas del HTML.
 function carritoUI(carritoCompras){
+  
   //traigo la info del if del html de carritoCantidad. Le agrego la información de la array carritoCompras.
   //El método html () en jQuery se utiliza para establecer o devolver el contenido innerHTML del elemento seleccionado. 
    $("#carritoCantidad").html(carritoCompras.length);
    //Borro los elementos anteriores para que no se repita la arrayd entera de nombre y que se vean solo los alfajores seleccionados.
    $("#carritoDeProductos").empty();
    
+   
    //Introduzco los nobmres y el precio de los productos seleccionados en el carrito del HTML.
   for (const alfajor of carritoCompras) {
      const alfajoresHTMLcarrito = `<div class="producto-carrito"><p>${alfajor.nombreAlfajor} - ${alfajor.precio} $</p> <button id="eliminar${alfajor.idAlfajor}" class="btnEliminar1 btn btn-danger">Delete purchase</button> <div>`;
      $("#carritoDeProductos").append(alfajoresHTMLcarrito);
        //ELIMINAR PRODUCTO DEL CARRITO
-       
+
+   
        let botonEliminar = document.getElementById(`eliminar${alfajor.idAlfajor}`);
        console.log(botonEliminar.parentElement);
 
        botonEliminar.addEventListener("click", function(){
-         
-        botonEliminar.parentElement.remove();
-        carritoCompras = carritoCompras.filter(el => el.idAlfajor != idAlfajor);
-       })
+        
+       botonEliminar.parentElement.remove();
+     
+       //carritoCompras = carritoCompras.filter(ele => ele.idAlfajor =! seleccion.idAlfajor);
+     })
+       
+       
+       
+     
        
   }
   //agrego el botón cofirmar compra que me permitirá enviar una solicitud al back end.
@@ -104,6 +118,8 @@ function carritoUI(carritoCompras){
   //llamo a la función que enviará la compra.
   $("#btnConfirmar").on("click",enviarCompra);
 }
+
+
 
 
 
